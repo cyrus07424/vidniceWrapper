@@ -2,17 +2,17 @@
 package jp.cyrus.vidniceWrapper.models;
 
 /**
- * UserOwnVideos.
+ * UserInfo.
  *
  * @author cyrus
  */
-public class UserOwnVideos {
+public class UserInfo {
 
 	public Integer code;
 
 	public String msg;
 
-	public UserOwnVideosData tiktokdata;
+	public UserInfoData tiktokdata;
 
 	public String url;
 }

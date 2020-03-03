@@ -9,6 +9,7 @@ import org.apache.http.message.BasicNameValuePair;
 
 import jp.cyrus.vidniceWrapper.constants.Commons;
 import jp.cyrus.vidniceWrapper.constants.Configurations;
+import jp.cyrus.vidniceWrapper.models.UserInfo;
 import jp.cyrus.vidniceWrapper.models.UserOwnVideos;
 import jp.cyrus.vidniceWrapper.utils.HttpClientHelper;
 
@@ -39,6 +40,20 @@ public class VidniceWrapper {
 
 		// Initialize cookies
 		HttpClientHelper.getHttpResponseWithoutResponse(this, "https://vidnice.com/", Commons.REFERER);
+	}
+
+	/**
+	 * Get user info.
+	 *
+	 * @param userId
+	 * @return
+	 */
+	public UserInfo getUserInfo(long userId) {
+		String url = String.format("https://vidnice.com/APIswitch.php?key=%s", "userinfo");
+		List<NameValuePair> params = new ArrayList<>();
+		params.add(new BasicNameValuePair("region", Configurations.REGION));
+		params.add(new BasicNameValuePair("user_id", String.valueOf(userId)));
+		return HttpClientHelper.postHttpResponse(this, url, Commons.REFERER, params, UserInfo.class);
 	}
 
 	/**
