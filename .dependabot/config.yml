@@ -9,4 +9,4 @@ update_configs:
         update_type: "all"
     - match:
         dependency_type: "production"
-        update_type: "security:patch"
+        update_type: "semver:patch"
